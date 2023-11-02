@@ -8,7 +8,6 @@ import { globalKeyEvent } from "./utils/globalEvent.js";
 import { cachingData, getCache } from "./services/cache.js";
 
 export default function App({ $target }) {
-  // 초기값
   this.state = {
     nodesState: {
       isRoot: true,
@@ -109,7 +108,6 @@ export default function App({ $target }) {
   });
   const breadcrumb = new Breadcrumb({
     $target,
-    initialState: this.state.paths,
     onClickPath,
   });
   const nodes = new Nodes({
