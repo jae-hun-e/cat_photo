@@ -2,7 +2,7 @@ import extend from "./utils/extend.js";
 import SuperComponent from "./core/SuperComponent.js";
 import createDOM from "./utils/createDOM.js";
 
-export default function Breadcrumb({ $target, onClick }) {
+export default function Breadcrumb({ $target, onClickPath }) {
   const $breadcrumb = createDOM($target, "nav", "Breadcrumb");
 
   this.render = () => {
@@ -26,7 +26,7 @@ export default function Breadcrumb({ $target, onClick }) {
     const { id, end } = $breadcrumbItem.dataset;
 
     if (end === "true") return;
-    onClick(id);
+    onClickPath(id);
   });
 }
 

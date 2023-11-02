@@ -1,5 +1,4 @@
 const validationState = (prevState, nextState) => {
-  console.log(typeof prevState, typeof nextState);
   if (typeof prevState !== typeof nextState) return false;
 
   if (Array.isArray(prevState) !== Array.isArray(nextState)) return false;
@@ -23,6 +22,7 @@ const arrayValidation = (prev, next) => {
 
     // 둘다 원시
     if (typeof item !== "object") return typeof item === typeof next[index];
+
     // 하나만 배열
     if (Array.isArray(item) !== Array.isArray(next[index])) return false;
     // 둘 다 배열
@@ -43,8 +43,8 @@ const objectValidation = (prev, next) => {
     const prevValue = prev[key];
     const nextValue = next[key];
 
-    // next 에 없으면 패스
-    if (!nextValue) return true;
+    // prev, next 에 값이없으면 패스
+    if (!prevValue || !nextValue) return true;
     // 둘 다 원시
     if (typeof prevValue !== "object")
       return typeof prevValue === typeof nextValue;

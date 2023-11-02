@@ -3,19 +3,19 @@ import extend from "./utils/extend.js";
 import SuperComponent from "./core/SuperComponent.js";
 import { IMAGE_BASE_URL } from "../static/url.js";
 
-export default function Nodes({ $target, onClick, onPrevClick }) {
+export default function Nodes({ $target, onClickNodes, onPrevPath }) {
   const $nodes = createDOM($target, "div", "Nodes");
 
   $nodes.addEventListener("click", (e) => {
     const $node = e.target.closest(".Node");
     const { id } = $node.dataset;
     if (!id) {
-      onPrevClick();
+      onPrevPath();
       return;
     }
     const selectedNode = this.state.nodes.find((node) => node.id === id);
     if (selectedNode) {
-      onClick(selectedNode);
+      onClickNodes(selectedNode);
     } else {
       alert("잘못된 접근입니다.");
     }
