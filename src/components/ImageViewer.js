@@ -1,9 +1,15 @@
-import extend from "./utils/extend.js";
+import extend from "../utils/extend.js";
 import SuperComponent from "./core/SuperComponent.js";
-import createDOM from "./utils/createDOM.js";
+import createDOM from "../utils/createDOM.js";
 
 export default function ImageViewer({ $target, onCloseImage }) {
   const $imageViewer = createDOM($target, "div", "ImageViewer Modal");
+
+  $imageViewer.addEventListener("click", (e) => {
+    if ([...e.target.classList].includes("Modal")) {
+      onCloseImage();
+    }
+  });
 
   this.render = function () {
     $imageViewer.style.display = this.state ? "block" : "none";
@@ -14,18 +20,6 @@ export default function ImageViewer({ $target, onCloseImage }) {
       </div>
     `;
   };
-
-  window.addEventListener(`keyup`, (e) => {
-    if (e.key === `Escape`) {
-      onCloseImage();
-    }
-  });
-
-  $imageViewer.addEventListener("click", (e) => {
-    if ([...e.target.classList].includes("Modal")) {
-      onCloseImage();
-    }
-  });
 }
 
 extend(ImageViewer, SuperComponent);

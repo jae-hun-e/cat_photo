@@ -1,9 +1,16 @@
-import extend from "./utils/extend.js";
+import extend from "../utils/extend.js";
 import SuperComponent from "./core/SuperComponent.js";
-import createDOM from "./utils/createDOM.js";
+import createDOM from "../utils/createDOM.js";
 
 export default function Breadcrumb({ $target, onClickPath }) {
   const $breadcrumb = createDOM($target, "nav", "Breadcrumb");
+
+  $breadcrumb.addEventListener("click", (e) => {
+    const $breadcrumbItem = e.target.closest(".Breadcrumb__item");
+    const { id, end } = $breadcrumbItem.dataset;
+    if (end === "true") return;
+    onClickPath(id);
+  });
 
   this.render = () => {
     $breadcrumb.innerHTML = `
@@ -19,15 +26,6 @@ export default function Breadcrumb({ $target, onClickPath }) {
         .join("")}
     `;
   };
-
-  $breadcrumb.addEventListener("click", (e) => {
-    const $breadcrumbItem = e.target.closest(".Breadcrumb__item");
-
-    const { id, end } = $breadcrumbItem.dataset;
-
-    if (end === "true") return;
-    onClickPath(id);
-  });
 }
 
 extend(Breadcrumb, SuperComponent);

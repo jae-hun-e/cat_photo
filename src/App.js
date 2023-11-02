@@ -4,6 +4,7 @@ import Loading from "./components/Loading.js";
 import ImageViewer from "./components/ImageViewer.js";
 import { API_END_POINT } from "./static/url.js";
 import Breadcrumb from "./components/Breadcrumb.js";
+import { globalKeyEvent } from "./utils/globalEvent.js";
 
 export default function App({ $target }) {
   // 초기값
@@ -111,6 +112,8 @@ export default function App({ $target }) {
   this.init = () => {
     fetchNodes();
   };
+
+  globalKeyEvent(onCloseImage, onPrevPath);
 
   this.init();
 }

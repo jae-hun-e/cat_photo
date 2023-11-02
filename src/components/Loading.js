@@ -1,6 +1,6 @@
-import extend from "./utils/extend.js";
+import extend from "../utils/extend.js";
 import SuperComponent from "./core/SuperComponent.js";
-import createDOM from "./utils/createDOM.js";
+import createDOM from "../utils/createDOM.js";
 import { IMAGE_BASE_URL } from "../static/url.js";
 
 export default function Loading({ $target }) {

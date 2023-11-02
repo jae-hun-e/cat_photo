@@ -1,5 +1,5 @@
-import createDOM from "./utils/createDOM.js";
-import extend from "./utils/extend.js";
+import createDOM from "../utils/createDOM.js";
+import extend from "../utils/extend.js";
 import SuperComponent from "./core/SuperComponent.js";
 import { IMAGE_BASE_URL } from "../static/url.js";
 
@@ -11,13 +11,9 @@ export default function Nodes({ $target, onClickNodes, onPrevPath }) {
     const { id } = $node.dataset;
     if (!id) {
       onPrevPath();
-      return;
-    }
-    const selectedNode = this.state.nodes.find((node) => node.id === id);
-    if (selectedNode) {
-      onClickNodes(selectedNode);
     } else {
-      alert("잘못된 접근입니다.");
+      const selectedNode = this.state.nodes.find((node) => node.id === id);
+      selectedNode ? onClickNodes(selectedNode) : alert("잘못된 접근입니다.");
     }
   });
 

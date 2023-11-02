@@ -1,9 +1,9 @@
-import validationState from "../utils/validation.js";
+import validationState from "../../utils/validation.js";
 
 export default function SuperComponent(state) {}
 
 SuperComponent.prototype.setState = function test(nextState) {
-  console.log(this, "비교", this.state, nextState);
+  // console.log(this, "비교", this.state, nextState);
   // 초기값 아니고
   if (this.state !== undefined) {
     // 이전과 같으면 렌더링 pass
