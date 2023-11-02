@@ -2,6 +2,8 @@ import Nodes from "./components/Nodes.js";
 import extend from "./components/utils/extend.js";
 import SuperComponent from "./components/core/SuperComponent.js";
 import { request } from "./services/api.js";
+import Loading from "./components/Loading.js";
+import { API_END_POINT } from "./static/url.js";
 
 export default function App({ $target }) {
   SuperComponent.call(this, {
@@ -17,15 +19,17 @@ export default function App({ $target }) {
       isRoot: this.state.isRoot,
       nodes: this.state.nodes,
     });
+
+    loading.setState(this.state.isLoading);
   };
+
+  const loading = new Loading({ $target });
 
   const nodes = new Nodes({
     $target,
     initialState: { isRoot: this.state.isRoot, nodes: this.state.nodes },
+    // TODO: 함수분리
     onClick: async (node) => {
-      if (this.state.isLoading) return;
-      this.state.isLoading = true;
-
       if (node.type === "DIRECTORY") {
         await fetchNodes(node.id);
         this.setState({
@@ -36,14 +40,11 @@ export default function App({ $target }) {
       if (node.type === "FILE") {
         this.setState({
           ...this.state,
-          selectedImageUrl: `https://kdt-frontend.cat-api.programmers.co.kr/static${node.filePath}`,
+          selectedImageUrl: `${API_END_POINT}/static${node.filePath}`,
         });
       }
     },
     onPrevClick: async () => {
-      if (this.state.isLoading) return;
-      this.state.isLoading = true;
-
       const nextPaths = [...this.state.paths];
       nextPaths.pop();
 
@@ -65,6 +66,7 @@ export default function App({ $target }) {
       ...this.state,
       isLoading: true,
     });
+
     const nodes = await request(id ? `/${id}` : "/");
 
     this.setState({

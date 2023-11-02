@@ -44,8 +44,6 @@ export default function Nodes({ $target, initialState, onClick, onPrevClick }) {
           )
           .join("")}`;
   };
-
-  this.render();
 }
 
 extend(Nodes, SuperComponent);
