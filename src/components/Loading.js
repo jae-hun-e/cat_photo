@@ -4,7 +4,7 @@ import createDOM from "./utils/createDOM.js";
 import { IMAGE_BASE_URL } from "../static/url.js";
 
 export default function Loading({ $target }) {
-  SuperComponent.call(this, false);
+  SuperComponent.call(this);
   const $loading = createDOM($target, "div", "Loading Modal");
 
   this.render = () => {

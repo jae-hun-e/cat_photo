@@ -3,12 +3,15 @@ import extend from "./components/utils/extend.js";
 import SuperComponent from "./components/core/SuperComponent.js";
 import { request } from "./services/api.js";
 import Loading from "./components/Loading.js";
+import ImageViewer from "./components/ImageViewer.js";
 import { API_END_POINT } from "./static/url.js";
 
 export default function App({ $target }) {
+  // 초기값
   SuperComponent.call(this, {
     isRoot: true,
     isLoading: false,
+    selectedImageUrl: null,
     nodes: [],
     paths: [],
   });
@@ -21,9 +24,20 @@ export default function App({ $target }) {
     });
 
     loading.setState(this.state.isLoading);
+    imageViewer.setState(this.state.selectedImageUrl);
   };
 
   const loading = new Loading({ $target });
+
+  const imageViewer = new ImageViewer({
+    $target,
+    onCloseImage: () => {
+      this.setState({
+        ...this.state,
+        selectedImageUrl: null,
+      });
+    },
+  });
 
   const nodes = new Nodes({
     $target,
@@ -72,7 +86,7 @@ export default function App({ $target }) {
     this.setState({
       ...this.state,
       nodes,
-      isRoot: id ? false : true,
+      isRoot: !id,
       isLoading: false,
     });
   };
