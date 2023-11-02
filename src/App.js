@@ -1,6 +1,4 @@
 import Nodes from "./components/Nodes.js";
-import extend from "./components/utils/extend.js";
-import SuperComponent from "./components/core/SuperComponent.js";
 import { request } from "./services/api.js";
 import Loading from "./components/Loading.js";
 import ImageViewer from "./components/ImageViewer.js";
@@ -9,7 +7,7 @@ import Breadcrumb from "./components/Breadcrumb.js";
 
 export default function App({ $target }) {
   // 초기값
-  SuperComponent.call(this, {
+  this.state = {
     nodesState: {
       isRoot: true,
       nodes: [],
@@ -17,17 +15,14 @@ export default function App({ $target }) {
     isLoading: false,
     selectedImageUrl: null,
     paths: [],
-  });
+  };
 
   this.setState = (nextState) => {
     this.state = nextState;
 
     loading.setState(this.state.isLoading);
-
     imageViewer.setState(this.state.selectedImageUrl);
-
     breadcrumb.setState(this.state.paths);
-
     nodes.setState(this.state.nodesState);
   };
 
@@ -127,5 +122,3 @@ export default function App({ $target }) {
 
   this.init();
 }
-
-extend(App, SuperComponent);

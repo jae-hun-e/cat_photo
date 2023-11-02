@@ -1,6 +1,4 @@
-export default function SuperComponent(state) {
-  this.state = state;
-}
+export default function SuperComponent(state) {}
 
 SuperComponent.prototype.setState = function test(nextState) {
   console.log("비교", this, this.state, nextState, this.state === nextState);

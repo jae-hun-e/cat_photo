@@ -4,7 +4,6 @@ import SuperComponent from "./core/SuperComponent.js";
 import { IMAGE_BASE_URL } from "../static/url.js";
 
 export default function Nodes({ $target, onClick, onPrevClick }) {
-  SuperComponent.call(this);
   const $nodes = createDOM($target, "div", "Nodes");
 
   $nodes.addEventListener("click", (e) => {

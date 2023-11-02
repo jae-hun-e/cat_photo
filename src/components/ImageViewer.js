@@ -3,7 +3,6 @@ import SuperComponent from "./core/SuperComponent.js";
 import createDOM from "./utils/createDOM.js";
 
 export default function ImageViewer({ $target, onCloseImage }) {
-  SuperComponent.call(this);
   const $imageViewer = createDOM($target, "div", "ImageViewer Modal");
 
   this.render = function () {

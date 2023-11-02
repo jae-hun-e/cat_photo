@@ -3,7 +3,6 @@ import SuperComponent from "./core/SuperComponent.js";
 import createDOM from "./utils/createDOM.js";
 
 export default function Breadcrumb({ $target, onClick }) {
-  SuperComponent.call(this);
   const $breadcrumb = createDOM($target, "nav", "Breadcrumb");
 
   this.render = () => {
