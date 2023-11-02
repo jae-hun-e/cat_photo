@@ -5,6 +5,7 @@ import ImageViewer from "./components/ImageViewer.js";
 import { API_END_POINT } from "./static/url.js";
 import Breadcrumb from "./components/Breadcrumb.js";
 import { globalKeyEvent } from "./utils/globalEvent.js";
+import { cachingData, getCache } from "./services/cache.js";
 
 export default function App({ $target }) {
   // 초기값
@@ -31,7 +32,15 @@ export default function App({ $target }) {
       ...this.state,
       isLoading: true,
     });
-    const nodes = await request(id ? `/${id}` : "/");
+
+    let nodes;
+    if (getCache(id)) {
+      nodes = getCache(id);
+    } else {
+      nodes = await request(id ? `/${id}` : "/");
+      cachingData(nodes, id);
+    }
+
     this.setState({
       ...this.state,
       nodesState: {
