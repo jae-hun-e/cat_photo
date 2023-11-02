@@ -8,6 +8,4 @@ SuperComponent.prototype.setState = function (nextState) {
   this.render();
 };
 
-SuperComponent.prototype.render = function () {
-  console.log("SuperComponent.render", this.state);
-};
+SuperComponent.prototype.render = function () {};
