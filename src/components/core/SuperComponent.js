@@ -2,7 +2,10 @@ export default function SuperComponent(state) {
   this.state = state;
 }
 
-SuperComponent.prototype.setState = function (nextState) {
+SuperComponent.prototype.setState = function test(nextState) {
+  console.log("비교", this, this.state, nextState, this.state === nextState);
+  if (this.state === nextState) return;
+  console.log("리렌더링 함", this);
   this.state = nextState;
   this.render();
 };

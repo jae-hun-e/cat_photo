@@ -10,23 +10,25 @@ import Breadcrumb from "./components/Breadcrumb.js";
 export default function App({ $target }) {
   // 초기값
   SuperComponent.call(this, {
-    isRoot: true,
+    nodesState: {
+      isRoot: true,
+      nodes: [],
+    },
     isLoading: false,
     selectedImageUrl: null,
-    nodes: [],
     paths: [],
   });
 
   this.setState = (nextState) => {
     this.state = nextState;
-    nodes.setState({
-      isRoot: this.state.isRoot,
-      nodes: this.state.nodes,
-    });
 
     loading.setState(this.state.isLoading);
+
     imageViewer.setState(this.state.selectedImageUrl);
+
     breadcrumb.setState(this.state.paths);
+
+    nodes.setState(this.state.nodesState);
   };
 
   const loading = new Loading({ $target });
@@ -66,7 +68,6 @@ export default function App({ $target }) {
 
   const nodes = new Nodes({
     $target,
-    initialState: { isRoot: this.state.isRoot, nodes: this.state.nodes },
     // TODO: 함수분리
     onClick: async (node) => {
       if (node.type === "DIRECTORY") {
@@ -106,14 +107,18 @@ export default function App({ $target }) {
       isLoading: true,
     });
 
+    console.log("================1==============");
     const nodes = await request(id ? `/${id}` : "/");
 
     this.setState({
       ...this.state,
-      nodes,
-      isRoot: !id,
+      nodesState: {
+        isRoot: !id,
+        nodes,
+      },
       isLoading: false,
     });
+    console.log("================2==============");
   };
 
   this.init = () => {
