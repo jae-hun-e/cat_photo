@@ -4,7 +4,6 @@ export default function SuperComponent(state) {
 
 SuperComponent.prototype.setState = function (nextState) {
   this.state = nextState;
-  console.error(this.state);
   this.render();
 };
 
