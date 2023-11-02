@@ -13,7 +13,7 @@ export default function App({ $target }) {
       nodes: [],
     },
     isLoading: false,
-    selectedImageUrl: null,
+    selectedImageUrl: "",
     paths: [],
   };
 
@@ -44,7 +44,7 @@ export default function App({ $target }) {
   const onCloseImage = () => {
     this.setState({
       ...this.state,
-      selectedImageUrl: null,
+      selectedImageUrl: "",
     });
   };
 
