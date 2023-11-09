@@ -3,14 +3,14 @@ const expirationTime = 30 * 60 * 1000; // 30분
 export const getCache = (key = "") => {
   try {
     const storedValue = storage.getItem(key);
-    if (!storedValue) return false;
+    if (!storedValue) return null;
 
     const { value, expiration } = JSON.parse(storedValue);
     const isExpired = new Date().getTime() > expiration;
 
     if (isExpired) {
       storage.removeItem(key);
-      return false;
+      return null;
     }
     return value;
   } catch (e) {

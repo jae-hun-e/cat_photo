@@ -26,8 +26,8 @@
 [o] 이벤드 등록 함수 네이밍 변경 -> setGlobalKeyEvent + init으로 모아놓기
 [o] 이벤트 유틸함수 파라미터 네이밍 변경 => onKeyupEscape, onKeyupBack
 
-[ ] 캐싱 리턴값 타입 통일
-[ ] 캐싱도 추상화에 포함
+[o] 캐싱 리턴값 타입 통일
+[o] 캐싱도 추상화에 포함
 
 [ ] ImageViewer.js 에서 contains 메서드로 변경
 [ ] 이미지url 가져오는 유틸함수 구현

@@ -32,13 +32,7 @@ export default function App({ $target }) {
       isLoading: true,
     });
 
-    let nodes;
-    if (getCache(id)) {
-      nodes = getCache(id);
-    } else {
-      nodes = await request(id ? `/${id}` : "/");
-      cachingData(nodes, id);
-    }
+    const nodes = await request(id ? `/${id}` : "");
 
     this.setState({
       ...this.state,
