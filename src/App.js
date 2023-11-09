@@ -4,8 +4,8 @@ import Loading from "./components/Loading.js";
 import ImageViewer from "./components/ImageViewer.js";
 import { API_END_POINT } from "./static/url.js";
 import Breadcrumb from "./components/Breadcrumb.js";
-import { globalKeyEvent } from "./utils/globalEvent.js";
 import { cachingData, getCache } from "./services/cache.js";
+import { setGlobalKeyEvent } from "./utils/globalEvent.js";
 
 export default function App({ $target }) {
   this.state = {
@@ -93,7 +93,10 @@ export default function App({ $target }) {
 
   const onPrevPath = async () => {
     const nextPaths = [...this.state.paths];
-    nextPaths.pop();
+
+    const popPath = nextPaths.pop();
+    if (!popPath) return;
+
     this.setState({
       ...this.state,
       paths: nextPaths,
@@ -117,10 +120,9 @@ export default function App({ $target }) {
   });
 
   this.init = () => {
+    setGlobalKeyEvent(onCloseImage, onPrevPath);
     fetchNodes();
   };
-
-  globalKeyEvent(onCloseImage, onPrevPath);
 
   this.init();
 }

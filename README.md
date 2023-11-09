@@ -18,3 +18,22 @@
 1. 데이터 흐름 단방향 (App -> 하위 컴포넌트) 
 2. 컴포넌트 의존도 낮춤 (로직 외부 주입)
 3. 데이터 로컬스토리지에 캐싱
+
+
+### 리팩토링
+
+[o] 백스페이스로 변경 + root에서는 막아놓기
+[o] 이벤드 등록 함수 네이밍 변경 -> setGlobalKeyEvent + init으로 모아놓기
+[o] 이벤트 유틸함수 파라미터 네이밍 변경 => onKeyupEscape, onKeyupBack
+
+[ ] 캐싱 리턴값 타입 통일
+[ ] 캐싱도 추상화에 포함
+
+[ ] ImageViewer.js 에서 contains 메서드로 변경
+[ ] 이미지url 가져오는 유틸함수 구현
+[ ] selectedImageUrl에 저장할 값 간소화
+
+[ ] state mapped형태로 변경
+
+
+[ ] deep copy 방지 -> 성급한 최적화 => 각 state에서 deep copy

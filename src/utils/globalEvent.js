@@ -1,10 +1,10 @@
-export const globalKeyEvent = (onCloseImage, onPrevPath) => {
+export const setGlobalKeyEvent = (onKeyupEscape, onKeyupBack) => {
   window.addEventListener("keyup", (e) => {
     if (e.key === "Escape") {
-      onCloseImage();
+      onKeyupEscape();
     }
-    if (e.key === "/") {
-      onPrevPath();
+    if (e.key === "Backspace") {
+      onKeyupBack();
     }
   });
 };
