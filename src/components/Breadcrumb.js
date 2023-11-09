@@ -13,13 +13,14 @@ export default function Breadcrumb({ $target, onClickPath }) {
   });
 
   this.render = () => {
+    const { paths } = this.state;
     $breadcrumb.innerHTML = `
       <div class="Breadcrumb__item">Root</div>
-      ${this.state
+      ${this.state.paths
         .map(
           ({ name, id }, idx) => `
         <div class="Breadcrumb__item" data-id="${id}" data-end=${
-            idx === this.state.length - 1
+            idx === paths.length - 1
           }>${name}</div>
       `
         )

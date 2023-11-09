@@ -18,10 +18,10 @@ export default function App({ $target }) {
 
   this.setState = (nextState) => {
     this.state = nextState;
-    loading.setState(this.state.isLoading);
-    imageViewer.setState(this.state.selectedFilePath);
-    breadcrumb.setState(this.state.paths);
-    nodes.setState(this.state.nodesState);
+    loading.setState({ isLoading: this.state.isLoading });
+    imageViewer.setState({ selectedFilePath: this.state.selectedFilePath });
+    breadcrumb.setState({ paths: this.state.paths });
+    nodes.setState({ nodesState: this.state.nodesState });
   };
 
   const fetchNodes = async (id) => {

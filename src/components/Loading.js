@@ -7,7 +7,8 @@ export default function Loading({ $target }) {
   const $loading = createDOM($target, "div", "Loading Modal");
 
   this.render = () => {
-    $loading.style.display = this.state ? "block" : "none";
+    const { isLoading } = this.state;
+    $loading.style.display = isLoading ? "block" : "none";
 
     $loading.innerHTML = `
       <div class="content">

@@ -13,11 +13,12 @@ export default function ImageViewer({ $target, onCloseImage }) {
   });
 
   this.render = function () {
-    $imageViewer.style.display = this.state ? "block" : "none";
+    const { selectedFilePath } = this.state;
+    $imageViewer.style.display = selectedFilePath ? "block" : "none";
 
     $imageViewer.innerHTML = `
       <div class="content">
-        <img src = "${getImageUrl(this.state)}" />
+        <img src = "${getImageUrl(selectedFilePath)}" />
       </div>
     `;
   };

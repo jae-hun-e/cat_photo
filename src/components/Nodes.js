@@ -18,7 +18,7 @@ export default function Nodes({ $target, onClickNodes, onPrevPath }) {
   });
 
   this.render = () => {
-    const { isRoot, nodes } = this.state;
+    const { isRoot, nodes } = this.state.nodesState;
     $nodes.innerHTML = `
     ${
       isRoot
