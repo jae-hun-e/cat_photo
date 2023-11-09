@@ -33,5 +33,6 @@
 [o] selectedImageUrl에 저장할 값 간소화
 [o] 이미지url 가져오는 유틸함수 구현
 
+[o] deep copy 방지 -> 성급한 최적화 => 각 state에서 deep copy
 [ ] state mapped형태로 변경
-[ ] deep copy 방지 -> 성급한 최적화 => 각 state에서 deep copy
+

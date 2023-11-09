@@ -1,4 +1,4 @@
-const validationState = (prevState, nextState) => {
+const validateState = (prevState, nextState) => {
   if (typeof prevState !== typeof nextState) return false;
 
   if (Array.isArray(prevState) !== Array.isArray(nextState)) return false;
@@ -57,4 +57,4 @@ const objectValidation = (prev, next) => {
   });
 };
 
-export default validationState;
+export default validateState;

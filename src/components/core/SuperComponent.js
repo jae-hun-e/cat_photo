@@ -1,11 +1,13 @@
-import validationState from "../../utils/validation.js";
+import validateState from "../../utils/validation.js";
+import { isEqual } from "../../utils/lodash.js";
 
 export default function SuperComponent(state) {}
 
-SuperComponent.prototype.setState = function test(nextState) {
+SuperComponent.prototype.setState = function (nextState) {
   if (this.state !== undefined) {
-    if (this.state === nextState) return;
-    if (!validationState(this.state, nextState)) {
+    if (isEqual(this.state, nextState)) return;
+
+    if (!validateState(this.state, nextState)) {
       alert("nextState 에 잘못된 값이 들어왔습니다.");
       return;
     }
