@@ -1,7 +1,7 @@
 import createDOM from "../utils/createDOM.js";
 import extend from "../utils/extend.js";
 import SuperComponent from "./core/SuperComponent.js";
-import { IMAGE_BASE_URL } from "../static/url.js";
+import { getPngUrl } from "../utils/getStaticUrl.js";
 
 export default function Nodes({ $target, onClickNodes, onPrevPath }) {
   const $nodes = createDOM($target, "div", "Nodes");
@@ -24,16 +24,16 @@ export default function Nodes({ $target, onClickNodes, onPrevPath }) {
       isRoot
         ? ""
         : `<div class="Node">
-            <img src="${IMAGE_BASE_URL}/prev.png" />
+            <img src="${getPngUrl("prev")}" />
         </div>`
     }
         ${nodes
           .map(
             (node) =>
               `<div class="Node" data-id ="${node.id}">
-                  <img src = ${IMAGE_BASE_URL}/${
-                node.type === "DIRECTORY" ? "directory" : "file"
-              }.png />
+                  <img src ="${getPngUrl(
+                    node.type === "DIRECTORY" ? "directory" : "file"
+                  )}"/>
                   ${node.name}
                 </div>`
           )

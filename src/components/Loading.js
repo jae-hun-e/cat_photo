@@ -1,7 +1,7 @@
 import extend from "../utils/extend.js";
 import SuperComponent from "./core/SuperComponent.js";
 import createDOM from "../utils/createDOM.js";
-import { IMAGE_BASE_URL } from "../static/url.js";
+import { getGifUrl } from "../utils/getStaticUrl.js";
 
 export default function Loading({ $target }) {
   const $loading = createDOM($target, "div", "Loading Modal");
@@ -11,7 +11,7 @@ export default function Loading({ $target }) {
 
     $loading.innerHTML = `
       <div class="content">
-        <img width="100%" src = "${IMAGE_BASE_URL}/nyan-cat.gif" />
+        <img width="100%" src =  "${getGifUrl("nyan-cat")}" />
       </div>
     `;
   };

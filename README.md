@@ -29,11 +29,9 @@
 [o] 캐싱 리턴값 타입 통일
 [o] 캐싱도 추상화에 포함
 
-[ ] ImageViewer.js 에서 contains 메서드로 변경
-[ ] 이미지url 가져오는 유틸함수 구현
-[ ] selectedImageUrl에 저장할 값 간소화
+[o] ImageViewer.js 에서 contains 메서드로 변경
+[o] selectedImageUrl에 저장할 값 간소화
+[o] 이미지url 가져오는 유틸함수 구현
 
 [ ] state mapped형태로 변경
-
-
 [ ] deep copy 방지 -> 성급한 최적화 => 각 state에서 deep copy

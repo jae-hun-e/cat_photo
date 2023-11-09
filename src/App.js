@@ -2,9 +2,7 @@ import Nodes from "./components/Nodes.js";
 import { request } from "./services/api.js";
 import Loading from "./components/Loading.js";
 import ImageViewer from "./components/ImageViewer.js";
-import { API_END_POINT } from "./static/url.js";
 import Breadcrumb from "./components/Breadcrumb.js";
-import { cachingData, getCache } from "./services/cache.js";
 import { setGlobalKeyEvent } from "./utils/globalEvent.js";
 
 export default function App({ $target }) {
@@ -14,14 +12,14 @@ export default function App({ $target }) {
       nodes: [],
     },
     isLoading: false,
-    selectedImageUrl: "",
+    selectedFilePath: "",
     paths: [],
   };
 
   this.setState = (nextState) => {
     this.state = nextState;
     loading.setState(this.state.isLoading);
-    imageViewer.setState(this.state.selectedImageUrl);
+    imageViewer.setState(this.state.selectedFilePath);
     breadcrumb.setState(this.state.paths);
     nodes.setState(this.state.nodesState);
   };
@@ -47,7 +45,7 @@ export default function App({ $target }) {
   const onCloseImage = () => {
     this.setState({
       ...this.state,
-      selectedImageUrl: "",
+      selectedFilePath: "",
     });
   };
 
@@ -80,7 +78,7 @@ export default function App({ $target }) {
     if (node.type === "FILE") {
       this.setState({
         ...this.state,
-        selectedImageUrl: `${API_END_POINT}/static${node.filePath}`,
+        selectedFilePath: node.filePath,
       });
     }
   };
